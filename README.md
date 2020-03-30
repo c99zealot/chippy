@@ -1,5 +1,13 @@
 # Chippy
 
+## Showcase
+### Space Invaders
+![image of space invaders game](pix/invaders.png)
+### Pong
+![image of pong game](pix/pong.png)
+### Breakout
+![image of breakout game](pix/breakout.png)
+
 ## Build instructions
 ### Linux (GCC/Clang)
 - install SDL2 (https://www.libsdl.org/download-2.0.php)
