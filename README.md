@@ -60,5 +60,7 @@ and `WINDOW_WIDTH` must be multiples of 32 and 64, respectively.
 
 # Acknowledgements
 [Cowgod's CHIP8 technical reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM)
+
 [Wikipedia CHIP8 article](https://en.wikipedia.org/wiki/CHIP-8)
+
 [SDL2](https://www.libsdl.org/)
