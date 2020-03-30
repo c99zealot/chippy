@@ -1,0 +1,22 @@
+MINES
+A mine hunter in Super CHIP-8
+(C)Copyright 1997 by David WINTER
+
+
+This source is to show to the novice programmer how we can program some nice games (i.e: not PONG and clones (just teasing the nostalgics...)) in CHIP-8 and Super CHIP-8.
+
+I decided to diffuse this source in the hope that some people will write new games for the SCHIP/CHIP-8 emulators.
+
+This game, as well as the others for this scene, are FREE and freely distributable. If you paid to have it, you have been stolen. If you got money to give it, you're a thief.
+
+
+
+The rules of this game are very simple: the game is played on a 18*9 squares playing field. On this playing field, some squares are MINED, some others are not. The goal is to find all the non mined ones. To do so, you just move around a cursor, and check the squares you want. If the square you're checking is mined, you lost, and all the mines are shown. If not, the game puts a number on the square, which tells how many mines are placed around it (if there are no mines around, the square is blanked). It is to you to make the logic deductions to find the non mined squares. To help you, the game allows putting marks on the squares which are believed to be mined.
+
+The keys are:
+[8] :   UP
+[4] :   LEFT (lower level under level selection)
+[5] :   SHOW SQUARE (start game under level selection)
+[6] :   RIGHT (upper level under level selection)
+[2] :   DOWN
+[*] :   MARK SQUARE AS MINED

@@ -1,0 +1,113 @@
+(Comp.sys.handhelds) Option: 
+Item: 3368 by catto at vivaldi.ecn.purdue.edu
+Author: [Erin S Catto]
+  Subj: Joust v2.2, a Super-CHIP video game
+  Date: Wed Jun 05 1991
+
+Joust v2.2
+==========
+
+Okay, its time for a Joust revision.  The main difference is the sprite
+bitmaps.  Although I didn't use the bit maps given to me by Steve VanDevender,
+I thank him for his insights into the game.  It's kind of funny the way this
+game developed.  I wasn't really sure of the details of the game.  I had to go
+on memory.  Gosh, I think Joust was introduced in something like 1981 or '82.
+I do remember dumping a couple pounds of quarters into that game.  Joust had
+pretty good graphics in its day, but I suppose Game Boy graphics can beat it
+now (not considering color).
+
+Do try this version (if you liked the others at all).  The new bitmaps have
+more of the "Joust Spirit".
+
+Note: Although the player and rival sprites are definitely different, it's
+      easy to get them mixed up and die quickly.  I use the rival soldier's
+      blank ankle to distinguish the sprites.
+
+The Game
+========
+
+                      /   =   right
+                      9   =   left
+                      0   =   up, start game, and replay
+
+                      points:     1 per egg
+                                  8 extra for clearing the bonus round
+                                  bonus player for winning bonus round
+
+Beware - due to the new bitmaps the bonus round is tougher, but do-able.
+         Call it a bug or call it a challenge.
+
+
+                       Have More Fun,
+
+                                         Zoom
+                                         catto@ecn.purdue.edu
+
+P.S.  Sorry no programming notes; I'm working on a new game which uses the
+      scrolling features of S-Chip v1.1 (my selfish priorities)
+      I will answer questions via e-mail.
+
+Do-able Chip games:      Defender, Berzerk (easy, no collisions allowed)
+                         Birds-eye view Car Racing, Scramble, Vanguard,
+                         Asteroids (tricky), Donkey Kong, Frogger, Pinball
+
+
+-To run Joust v2.2 you must have S-Chip v1.0 or v1.1.  Download it, recall the
+result to the stack.  Execute SCHIP.  Press 0 to start.
+
+----------
+  Resp: 1 of 1 by _falco at hpcvbbs.UUCP
+Author: [Andrey Dolgachev]
+  Date: Wed Jun 05 1991
+
+Erin,
+
+Great work on Joust but I have a couple of comments.  One bug I've noticed is
+that if you kill a buzzard right over one of the ledges, the egg goes through
+the ledge.  Otherwise, I haven't noticed any problems and I think its a great
+game.  Now how about that hand sticking out of the lava?  Regarding future CHIP
+games, I would love to start writing some CHIP programs, since I see a lot more
+potential in CHIP than in RPL or even ML.
+
+    Keep up the good work,
+           --Falco
+
+----------
+  Resp: 1 of 1 by catto at author.ecn.purdue.edu
+Author: [Erin S Catto]
+  Date: Sat Jun 08 1991
+
+Dan Stephenson writes:
+
+>BUGS:
+>
+>The eggs sometimes fall through a level.
+>The bouncing eggs sometimes forget to fall when they go past a ledge.
+>The bonus round IS goofy. Sometimes I whiz right THROUGH eggs!
+
+For my version of Joust I decided to let the eggs fall thru the ledge if the
+rival jouster is right above the ledge.  Why?  One, it was easier this way, and
+two, it makes the game more challenging because you have to chase the egg (the
+only item worth points).
+
+To save on space I used the same routine that keeps the jousters on the ledge
+to make the eggs bounce.  Now the jousters are wider than the eggs but S-CHIP
+doesn't know that; so when an egg bounces off the left edge of a platform it
+appears to make one bounce in mid-air.  I could fix this but I don't think it
+impacts the game enough to merit the effort.
+
+On the bonus round; yes, due to the new bitmaps of v2.2 the bonus round isn't
+quite right.  I think I will fix this, but until then you can pick up the eggs
+by moving across them coming from the left.
+
+Dan also mentioned a number of features that would help my Joust more fully
+emulate the original Joust.  However, having twenty revisions to this game does
+not interest me.  Especially now since I'm working on another S-CHIP game which
+will feature scrolling and animation.  It will be an action/adventure game with
+changing perspectives.  The new scrolling features of S-CHIP v1.1 are
+incredible!  They add so much potential to game writing.
+
+
+                                                   Zoom
+                                                   catto@ecn.purdue.edu
+

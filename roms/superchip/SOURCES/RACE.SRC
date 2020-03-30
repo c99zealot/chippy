@@ -1,0 +1,113 @@
+(Comp.sys.handhelds)
+Item: 3287 by erikmb at etek.chalmers.se
+Author: [Erik Bryntse]
+  Subj: Another demo for S-CHIP (v 1.1)
+  Date: Tue May 28 1991
+
+A SAMPLE PROGRAM FOR S-CHIP v1.1
+================================
+
+When I added the extra scroll functions to v1.1, I couldn't resist writing
+a car race. It lets you drive your car on a small forest road in high speed.
+Use 1 and 2 to steer it. Below is the CHIPPER source for this demo and the
+ASCed version.
+
+; CAR RACE DEMO FOR SUPER-CHIP v 1.1
+; (and no complaining about the lack of comments, please)
+; V3, V4 = OLD CAR COORD
+; V5, V6 = CAR COORDINATES
+; V7 = ROAD POS
+
+        DB      #00, #FF
+        LD      V5, 60
+        LD      V6, 45
+        LD      V7, 60
+        LD      V3, V5
+        LD      V4, V6
+        LD      I, CAR
+        DRW     V3, V4, 0
+
+MLOOP:  LD      I, CAR
+        DRW     V3, V4, 0
+        DB      #00, #C3
+        DRW     V5, V6, 0
+        SE      VF, 0
+        JP      EXIT
+        LD      V0, V7
+        CALL    PUTROAD
+        LD      V3, V5
+        LD      V4, V6
+        LD      V0, #7
+        SKNP    V0
+        CALL    LEFT
+        LD      V0, #8
+        SKNP    V0
+        CALL    RIGHT
+        RND     V0, 3
+        SNE     V0, 0
+        CALL    RR
+        RND     V0, 3
+        SNE     V0, 0
+        CALL    RL
+        JP      MLOOP
+
+EXIT:   JP      EXIT            ; FINISHED!
+
+
+RIGHT:  ADD     V5, 1
+        SNE     V5, 110
+        LD      V5, 109
+        RET
+
+LEFT:   LD      V0, 1
+        SUB     V5, V0
+        SNE     VF, 0
+        LD      V5, 0
+        RET
+
+RR:     ADD     V7, 1
+        SNE     V7, 90
+        LD      V7, 89
+        RET
+
+RL:     LD      V0, 1
+        SUB     V7, V0
+        SNE     VF, 0
+        LD      V7, 0
+        RET     
+
+
+; PLACE NEW ROAD PART AT COORDINATE V0, 0
+; IN:   V0
+; OUT:  -
+; USES: I, V0, V1
+
+PUTROAD:
+
+        LD      V1, 0
+        LD      I, SROAD
+        DRW     V0, V1, 3
+        ADD     V0, 25
+        DRW     V0, V1, 3
+        RET
+
+
+SROAD:  DB $10100000, $01000000, $10100000
+
+CAR:    DB $00110000, $00001100
+        DB $00111111, $11111100
+        DB $00110010, $01001100
+        DB $00000010, $01000000
+        DB $00000100, $00100000 
+        DB $00000100, $00100000
+        DB $00000100, $00100000
+        DB $00000100, $00100000
+        DB $11110100, $00101111
+        DB $11110100, $00101111
+        DB $11111101, $10111111
+        DB $11110110, $01101111
+        DB $11110110, $01101111 
+        DB $00000110, $01100000
+        DB $00111111, $11111100
+        DB $01111111, $11111110
+

@@ -1,0 +1,62 @@
+    HIGH
+    LD   VX,  R
+    LD   V4,  #00
+    LD   V5,  #00
+    LD   I,   Schip
+Loop:
+    DRW  V4,  V5, 0
+    LD   V6,  #02
+    LD   DT,  V6
+Wait:
+    LD   V6,  DT
+    SE   V6,  #00
+    JP   Wait
+    DRW  V4,  V5, 0
+    SE   V4,  V0
+    JP   No_Down
+    SNE  V5,  V1
+    JP   No_Up
+    ADD  V5,  #01
+    JP   Loop
+
+No_Down:
+    ADD  V4,  #01
+    JP   Loop
+
+No_Up:
+    DRW  V4,  V5, 0
+    LD   V4,  #00
+
+Show_Font:
+    LD   HF,  V4
+    DRW  V2,  V3, 10
+    LD   V5,  #14
+    LD   DT,  V5
+
+Wait2:
+    LD   V5,  DT
+    SE   V5,  #00
+    JP   Wait2
+    DRW  V2,  V3, 10
+    ADD  V4,  #01
+    SNE  V4,  #0A
+    EXIT
+    JP   Show_Font
+
+Schip:
+    DB $1..............1
+    DB $......111.......
+    DB $.....1...1......
+    DB $.....1..........
+    DB $......111.......
+    DB $.........1......
+    DB $.....1...1......
+    DB $......111.......
+    DB $................
+    DB $..11.1.1.1.11...
+    DB $.1...1.1.1.1.1..
+    DB $.1...111.1.11...
+    DB $.1...1.1.1.1....
+    DB $..11.1.1.1.1....
+    DB $................
+    DB $1..............1

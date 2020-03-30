@@ -1,0 +1,292 @@
+; UNCHIP Version 2.2.0 (C)Copyright 1996 by David WINTER
+
+;  Input file: sgames\worm3 (360 Bytes)
+; Output file: w
+
+; Comments added by David WINTER to help
+; people programming games in (S)CHIP-8
+
+OPTION  BINARY
+ALIGN   OFF
+OPTION  SCHIP11
+UNDEF   HPHEAD
+
+     JP   L21A
+
+L202:
+     DA 'Worm'
+
+L206:
+     DB 0
+     DA 'RB92'
+
+L20B:
+     DW #0000   ; Initial values of registers V0...VE
+     DB #00
+     DW #3E05
+     DW #002B
+     DW #7C00
+     DW #0006
+     DW #1E01
+     DW #0004
+
+L21A:
+     HIGH           ; Prepare game to use 128*64 resolution
+     CLS            ; Erase the screen
+
+     LD   I,  L20B  ; Load initial values
+     LD   VE,  [I]  ; of V0...VE
+
+     LD   I,  L368  ; Point on area where X locations of worm are stored
+
+L224:               ; Routine to clear X coordinates of worm sprite data
+     LD   [I], V0   ; Erase byte at I
+     ADD  I,   VC   ; Point on next byte
+     ADD  V1,  #01  ; Update counter of bytes to erase
+     SE   V1,  #00  ; Check if 256 bytes were erased
+     JP   L224      ; Continue erasing if not
+
+     LD   I,  L350   ; Draw head of worm at (06,30)
+     DRW  VA,  VB, 3 ;
+
+L232:
+     DRW  V4,  V2, 1 ; Draw horizontal lines
+     DRW  V4,  V3, 1 ; of playing field
+     ADD  V4,  #03   ; Compute their next locations
+     SE   V4,  #7A   ; Check if the last lines have been drawn
+     JP   L232       ; Continue drawing if not
+
+     LD   I,  L35F   ; Prepare to draw vertical lines
+     LD   V3,  #04   ; of playing field
+
+L240:
+     DRW  V3,  V2, 9 ; Draw vertical lines
+     DRW  V4,  V2, 9 ; of playing field
+     ADD  V2,  #09   ; Compute their next locations
+     SE   V2,  #3F   ; Check if the last lines have been drawn
+     JP   L240       ; Continue drawing if not
+
+     LD   I,  L206   ; Point on high score data
+     LD   V0,  [I]   ; Load high score into V0
+
+     LD   I,  L202   ; Point on free area
+     LD   B,   V0    ; Put BCD of high score
+
+     LD   V3,  #2E   ; Prepare to draw it at Y=46
+     CALL L2E4       ; Call subroutine to draw BCD data stored at 202
+
+     LD   I,  L202   ; Point on free area
+     LD   B,   V5    ; Put BCD of current score
+     CALL L2E2       ; Call subroutine to draw score
+
+     CALL L332       ; Draw ball at random location
+
+L25E:
+     LD   I,  L35E   ; Point on horizontal line sprite
+     DRW  V7,  V6, 1 ; Draw it between scores
+     ADD  V6,  #FE   ; Compute next location
+     SE   V6,  #11   ; Check if last line has been drawn
+     JP   L25E       ; Continue drawing if not
+
+L268:
+     LD   V3,  #06
+     LD   DT,  V3
+
+     LD   I,  L368
+     ADD  I,   V8
+     LD   V0,  [I]
+     LD   V4,  V0
+     LD   V0,  VA
+     LD   [I], V0
+
+     DW   #A468    ; LD I,  468 => point 256 bytes after enf of program (368)
+     ADD  I,   V8
+     LD   V0,  [I]
+     LD   V1,  V0
+     LD   V0,  VB
+     LD   [I], V0
+
+     LD   I,  L352
+     SE   V4,  #00
+     DRW  V4,  V1, 3
+
+     LD   I,  L348
+     ADD  I,   V9
+     LD   V1,  [I]
+
+     LD   I,  L355
+     DRW  VA,  VB, 2
+     ADD  VA,  V0
+     ADD  VB,  V1
+
+     LD   I,  L350
+     DRW  VA,  VB, 3
+     SE   VF,  #00
+     JP   L2FC
+
+     RND  V0,  #0F
+     SNE  V0,  #00
+     CALL L32E
+
+L2A6:
+     ADD  V8,  #01
+     SNE  V8,  VE
+     LD   V8,  #00
+
+L2AC:
+     LD   V1,  #08
+     SKP  V1
+     LD   V6,  #00
+     SKP  V1
+     JP   L2C0
+     SE   V6,  #00
+     JP   L2C0
+     ADD  V9,  #02
+     LD   V6,  #06
+     AND  V9,  V6
+
+L2C0:
+     LD   V1,  #09
+     SKP  V1
+     LD   V7,  #00
+     SKP  V1
+     JP   L2D4
+     SE   V7,  #00
+     JP   L2D4
+     ADD  V9,  #FE
+     LD   V7,  #06
+     AND  V9,  V7
+
+L2D4:
+     LD   V3,  DT
+     SE   V3,  #00
+     JP   L2AC
+     JP   L268
+
+L2DC:
+     CALL L2E2
+     LD   I,  L202
+     LD   B,   V5
+
+L2E2:
+     LD   V3,  #00
+
+L2E4:
+     LD   V4,  #7C   ; Set X location where digits will be drawn
+     LD   I,  L202   ; Point on area where BCD digits are stored
+     LD   V2,  [I]   ; Store them into V0...V2
+
+     LD   F,   V0    ; Make I point on font of digit in V0
+     DRW  V4,  V3, 5 ; Draw it
+     ADD  V3,  #06   ; Compute Y location of next digit
+
+     LD   F,   V1    ; Make I point on font of digit in V1
+     DRW  V4,  V3, 5 ; Draw it
+     ADD  V3,  #06   ; Compute Y location of next digit
+
+     LD   F,   V2    ; Make I point on font of digit in V2
+     DRW  V4,  V3, 5 ; Draw it
+
+     RET             ; Return
+
+L2FC:
+     CALL L342       ; Draw random ball
+
+     LD   I,  L350
+     DRW  VA,  VB, 3
+     DRW  VA,  VB, 3
+
+     SE   VF,  #00
+     JP   L312
+
+     LD   V4,  #02
+     LD   ST,  V4
+     ADD  V5,  #01
+     CALL L2DC
+     JP   L2A6
+
+L312:
+     LD   V4,  #0A
+     LD   ST,  V4
+     DRW  VA,  VB, 3
+     SUB  VA,  V0
+     SUB  VB,  V1
+
+     LD   I,  L355
+     DRW  VA,  VB, 2
+
+     LD   I,  L206
+     LD   V0,  [I]
+     SUB  V0,  V5
+     LD   V0,  V5
+     SNE  VF,  #00
+     LD   [I], V0
+
+L32C:
+     JP   L32C
+
+L32E:
+     ADD  VE,  #01
+     RET
+
+L332:
+     LD   I,  L357   ; Point on ball sprite
+L334:
+     RND  VC,  #7C   ; Get random X-location of ball
+     ADD  VC,  #02   ; Range = 2...126
+
+     RND  VD,  #3C   ; Get ramdom Y-location of ball
+     ADD  VD,  #02   ; Range = 2...62
+
+     DRW  VC,  VD, 7 ; Draw ball
+     SNE  VF,  #00   ; Check if it was drawn on a free area
+     RET             ; Return if yes
+
+L342:
+     LD   I,  L357   ; Point on ball sprite
+     DRW  VC,  VD, 7 ; Draw ball on itself to erase it
+     JP   L334       ; Redraw ball at random location
+
+L348:
+          ;XXYY => values added to X and Y for directions
+     DW   #0400 ; RIGHT : X=+4, Y=+0
+     DW   #00FC ;    UP : X=+0, Y=-4
+     DW   #FC00 ;  LEFT : X=-4, Y=+0
+     DW   #0004 ;  DOWN : X=+0, Y=+4
+
+L350:
+     DB $111..... ; Head of worm (8*3 =>3 bytes)
+     DB $111.....
+L352:
+     DB $111..... ; Tail of worm (8*3 =>3 bytes)
+     DB $1.1.....
+     DB $111.....
+
+L355:
+     DB $........ ; Sprite drawn on first block of tail, to make
+     DB $.1...... ; head of worm when this one is moving
+
+L357:
+     DB $..111... ; Ball to eat (7*7 => 7 bytes)
+     DB $.11111..
+     DB $11.1111.
+     DB $1111111.
+     DB $1111111.
+     DB $.11111..
+     DB $..111...
+
+L35E: DB $1111.... ; Horizontal lines between scores
+                   ; or horizontal line delimiting playing field
+
+L35F:
+     DB $1....... ; Vertical line delimiting playing field
+     DB $1.......
+     DB $1.......
+     DB $1.......
+     DB $1.......
+     DB $1.......
+     DB $1.......
+     DB $1.......
+     DB $1.......
+
+L368:

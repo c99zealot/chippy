@@ -1,0 +1,26 @@
+Item: 3731 by catto at author.ecn.purdue.edu
+Author: [Erin S Catto]
+  Subj: Joust v2.3  [See JOUST.DOC on Disk #3 for more info. -jkh-]
+  Date: Sat Jul 20 1991
+
+[Note: Requires SCHIP, found in the ANT library (and on Disk #3).  -jkh-]
+
+Joust v2.3
+==========
+
+Hi All,
+
+The Game:             0    =    start, replay, up
+                      /    =    right
+                      9    =    left
+
+Points:               1 point per egg touched
+                      8 points for clearing bonus round
+                      1 player for clearing bonus round
+
+NOTE:  Only use SCHIP v1.1 to run this game.
+
+                          No big whoop,
+
+                          Zoom
+                          catto@ecn.purdue.edu
