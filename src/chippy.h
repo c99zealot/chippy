@@ -4,9 +4,9 @@
         #define X ((current_instruction & 0x0f00) >> 8)
         #define Y ((current_instruction & 0x00f0) >> 4)
 
-        #define N   ((current_instruction & 0x000f))
-        #define NN  ((current_instruction & 0x00ff))
-        #define NNN ((current_instruction & 0x0fff))
+        #define N   (current_instruction & 0x000f)
+        #define NN  (current_instruction & 0x00ff)
+        #define NNN (current_instruction & 0x0fff)
 
         #define PIXEL_WIDTH  (WINDOW_WIDTH  / 64)
         #define PIXEL_HEIGHT (WINDOW_HEIGHT / 32)
