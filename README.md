@@ -33,26 +33,12 @@ with hexadecimal numbers 0-F:
 |7|8|9|E|
 |A|0|B|F|
 ```
-These are mapped to a modern keyboard layouts in the following way:
+These are mapped to this block of keys on modern keyboard layouts:
 ```
-keyboard -> chip8
-
-1 -> 1
-2 -> 2
-3 -> 3
-4 -> C
-Q -> 4
-W -> 5
-E -> 6
-R -> D
-A -> 7
-S -> 8
-D -> 9
-F -> E
-Z -> A
-X -> 0
-C -> B
-V -> F
+|1|2|3|4|
+ |Q|W|E|R|
+  |A|S|D|F|
+   |Z|X|C|V|
 ```
 See roms/chip8.txt for details on each game, controls etc.
 ### configuring the emulator
