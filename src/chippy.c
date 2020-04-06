@@ -398,7 +398,7 @@ void cycle(void) {
                                         V[X] = V[Y] - V[X];
                                         break;
                                 case 0xE:        // 0x8XYE
-                                        V[0xF] = (V[X] >> 7) & 1;
+                                        V[0xF] = (V[X] >> 7);
                                         V[X] <<= 1;
                                         break;
 
