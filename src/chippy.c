@@ -406,7 +406,7 @@ void cycle(void) {
                                         panic(ERR_ILLEGAL_INSTRUCTION);
                         }
                         break;
-                case 0x9000:        // 0x8XY0
+                case 0x9000:        // 0x9XY0
                         if (V[X] != V[Y])
                                 program_counter += 2;
                         break;

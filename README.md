@@ -11,16 +11,8 @@
 ## Build instructions
 ### Linux (GCC/Clang)
 - Install SDL2 (https://www.libsdl.org/download-2.0.php)
-
 - Run `make` in the root directory of the project
 
-<!--
-#### SuperCHIP
-
-### Windows (MSVC/CL.EXE)
-#### Standard build
-#### SuperCHIP
--->
 ## Usage
 ### loading a game
 `./chippy <path to chip8 rom>`
@@ -41,10 +33,9 @@ These are mapped to this block of keys on modern keyboard layouts:
    |Z|X|C|V|
 ```
 See roms/chip8.txt for details on each game, controls etc.
+
 ### configuring the emulator
-At the moment there are only two aspects of the emulator which
-can be modified: the dimensions of the window it runs in and it's
-clock speed. Both of these are defined as constants in chippy.h,
+Values which may be modified are defined as constants in src/chippy.h,
 please note that any value for `CLOCK_RATE` above 1000 will make the
 emulator run as fast as possible and that values for `WINDOW_HEIGHT`
 and `WINDOW_WIDTH` must be multiples of 32 and 64, respectively.
