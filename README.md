@@ -14,9 +14,9 @@
 - Run `make` in the root directory of the project
 
 ## Usage
-### loading a game
+### Loading a game
 `./chippy <path to chip8 rom>`
-### playing a game
+### Playing a game
 The chip8 has a 16-key keypad labelled
 with hexadecimal numbers 0-F:
 ```
@@ -34,11 +34,13 @@ These are mapped to this block of keys on modern keyboard layouts:
 ```
 See roms/chip8.txt for details on each game, controls etc.
 
-### configuring the emulator
-Values which may be modified are defined as constants in src/chippy.h,
+### Configuring the emulator
+Modifiable values are defined as constants in src/chippy.h,
 please note that any value for `CLOCK_RATE` above 1000 will make the
-emulator run as fast as possible and that values for `WINDOW_HEIGHT`
-and `WINDOW_WIDTH` must be multiples of 32 and 64, respectively.
+emulator run as fast as possible and that, while the window resolution
+can be any number, multiples of 32 for `WINDOW_HEIGHT` and 64 for
+`WINDOW_WIDTH` work best since the CHIP8's screen is 64x32.
+The default window resolution is 640x320.
 
 ## Uninstalling
 - Run `make clean` in the root directory of the project

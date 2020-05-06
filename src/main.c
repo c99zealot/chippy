@@ -21,8 +21,7 @@ int main(int argc, char **argv) {
                         switch (event.type) {
                                 case SDL_QUIT:
                                         panic(USER_EXIT);
-                                case SDL_KEYDOWN:
-                                                // FALLTHROUGH
+                                case SDL_KEYDOWN:    // FALLTHROUGH
                                 case SDL_KEYUP:
                                         handle_keyevent(event);
                         }

@@ -66,7 +66,6 @@ void deinit(void) {
                 SDL_CloseAudioDevice(audio_device);
 
         SDL_Quit();
-
         puts("OK");
 }
 
@@ -246,7 +245,7 @@ int handle_keyevent(SDL_Event event) {
                         return -1;
         }
 
-        key_states[key] = (event.type == SDL_KEYDOWN) ? 1 : 0;
+        key_states[key] = (event.type == SDL_KEYDOWN);
         return key;
 }
 
