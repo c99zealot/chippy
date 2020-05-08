@@ -1,8 +1,8 @@
 # Chippy
 ![code size shield](https://img.shields.io/github/languages/code-size/c99zealot/chippy?style=plastic)
 ![top language shield](https://img.shields.io/github/languages/top/c99zealot/chippy?label=C&style=plastic)
-![license shield](https://img.shields.io/github/license/c99zealot/chippy)
-![goto counter shield](https://img.shields.io/github/search/c99zealot/chippy/goto)
+![license shield](https://img.shields.io/github/license/c99zealot/chippy?style=plastic)
+![goto counter shield](https://img.shields.io/github/search/c99zealot/chippy/goto?style=plastic)
 
 ## Showcase
 ### Space Invaders
