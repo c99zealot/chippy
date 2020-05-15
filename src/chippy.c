@@ -145,6 +145,8 @@ void init(void) {
         if (!(window && renderer))
                 panic(ERR_SDL_FAIL);
 
+        SDL_ShowCursor(SDL_DISABLE);
+
         // draw black background
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
