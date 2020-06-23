@@ -98,6 +98,10 @@ void panic(ExitCode err) {
                 case ERR_INVALID_RETURN:
                         fprintf(stderr, "0x00EE (ret) instruction at 0x%X but no subroutine is being executed\n",
                                 program_counter);
+                        break;
+                case ERR_INVALID_SPRITE:
+                        fprintf(stderr,
+                                "drawing %d byte sprite stored at 0x%X would involve reading past main memory\n", N, I);
 
                 // NO DEFAULT
         }
@@ -420,14 +424,12 @@ void cycle(void) {
                 case 0xC000:        // 0xCXNN
                         V[X] = rand() & NN;
                         break;
-                case 0xD000:
-                        if (N) {        // 0xDXYN
+                case 0xD000:        // 0xDXYN
+                        if (I <= 4096 - N) {
                                 draw_sprite(V[X], V[Y], N);
                                 update_screen();
-                        }
-#ifdef SUPERCHIP
-                        else {}         // 0xDXY0 XXX
-#endif
+                        } else
+                                panic(ERR_INVALID_SPRITE);
                         break;
                 case 0xE000:
                         switch(N) {

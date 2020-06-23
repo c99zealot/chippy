@@ -24,7 +24,8 @@
                 ERR_ILLEGAL_INSTRUCTION,
                 ERR_INVALID_ARGUMENT,
                 ERR_INVALID_RETURN,
-                ERR_STACK_OVERFLOW
+                ERR_STACK_OVERFLOW,
+                ERR_INVALID_SPRITE
         } ExitCode;
 
         extern void deinit(void);
