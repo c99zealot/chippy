@@ -101,7 +101,7 @@ void panic(ExitCode err) {
                         break;
                 case ERR_INVALID_SPRITE:
                         fprintf(stderr,
-                                "drawing %d byte sprite stored at 0x%X would involve reading past main memory\n", N, I);
+                                "drawing %d byte sprite stored at 0x%X involves reading beyond main memory\n", N, I);
 
                 // NO DEFAULT
         }
