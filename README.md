@@ -16,6 +16,9 @@
 - Install SDL2 (https://www.libsdl.org/download-2.0.php)
 - Run `make` in the root directory of the project
 
+## Installation
+- Run `sudo make install` in the root directory of the project
+
 ## Usage
 ### Loading a game
 `./chippy <path to chip8 rom>`
