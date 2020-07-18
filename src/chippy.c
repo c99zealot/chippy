@@ -10,7 +10,7 @@
 #include "chippy.h"
 
 uint8_t V[16]; 
-uint8_t main_memory[4096];
+uint8_t main_memory[4097];
 uint8_t screen_buffer[32][64];
 uint8_t key_states[16];
 uint16_t call_stack[256];

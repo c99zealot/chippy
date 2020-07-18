@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include <SDL2/SDL.h>
+
 #include "chippy.h"
 
 int main(int argc, char **argv) {
@@ -24,6 +25,8 @@ int main(int argc, char **argv) {
                                 case SDL_KEYDOWN:    // FALLTHROUGH
                                 case SDL_KEYUP:
                                         handle_keyevent(event);
+
+                                // NO DEFAULT
                         }
                 }
 
