@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS=-std=c99 -lSDL2 -lm
+CFLAGS=-std=c99 -O3 -lSDL2 -lm
 
 chippy: src/main.c src/chippy.c src/chippy.h
 	@$(CC) $(CFLAGS) -o chippy src/*.c
