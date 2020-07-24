@@ -49,7 +49,7 @@ can be any number, multiples of 32 for `WINDOW_HEIGHT` and 64 for
 The default window resolution is 640x320.
 
 ## Uninstalling
-- Run `make clean` in the root directory of the project
+- Run `sudo make uninstall && make clean` in the root directory of the project
 
 # Acknowledgements
 [Cowgod's CHIP8 technical reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM)
