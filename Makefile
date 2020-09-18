@@ -11,4 +11,4 @@ clean:
 	@rm chippy
 
 uninstall:
-	@rm bin/chippy
+	@rm /bin/chippy
